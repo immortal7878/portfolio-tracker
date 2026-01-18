@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio Tracker</title>
+    <title>Portfolio</title>
     <style>
         * {
             margin: 0;
@@ -14,16 +14,16 @@
 
 ```
     body {
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
-        color: white;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        background: #0a0a0a;
+        color: #e5e5e5;
         min-height: 100vh;
-        padding: 20px;
-        padding-bottom: 100px;
+        padding: 12px;
+        padding-bottom: 70px;
     }
     
     .container {
-        max-width: 800px;
+        max-width: 600px;
         margin: 0 auto;
     }
     
@@ -31,188 +31,195 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-bottom: 24px;
+        padding: 12px 0;
+        margin-bottom: 16px;
+        border-bottom: 1px solid #1a1a1a;
     }
     
     h1 {
-        font-size: 32px;
-        font-weight: bold;
+        font-size: 20px;
+        font-weight: 600;
+        color: #f5f5f5;
+        letter-spacing: -0.5px;
     }
     
     .refresh-btn {
-        background: #475569;
+        background: #1a1a1a;
         border: none;
-        border-radius: 8px;
-        padding: 10px;
-        color: white;
+        border-radius: 6px;
+        padding: 6px 10px;
+        color: #888;
         cursor: pointer;
-        font-size: 20px;
+        font-size: 16px;
     }
     
     .refresh-btn:active {
-        background: #334155;
+        background: #222;
     }
     
     .total-card {
-        background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
-        border-radius: 16px;
-        padding: 24px;
-        margin-bottom: 24px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        background: #141414;
+        border: 1px solid #1f1f1f;
+        border-radius: 8px;
+        padding: 16px;
+        margin-bottom: 16px;
     }
     
     .total-label {
-        color: #bfdbfe;
-        font-size: 14px;
+        color: #666;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
         margin-bottom: 4px;
     }
     
     .total-value {
-        font-size: 36px;
-        font-weight: bold;
-        margin-bottom: 8px;
+        font-size: 28px;
+        font-weight: 600;
+        color: #f5f5f5;
+        margin-bottom: 6px;
     }
     
     .total-change {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        font-size: 18px;
-        font-weight: 600;
-    }
-    
-    .total-change.positive {
-        color: #86efac;
-    }
-    
-    .total-change.negative {
-        color: #fca5a5;
+        font-size: 14px;
+        font-weight: 500;
     }
     
     .holdings {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-        margin-bottom: 80px;
+        background: #141414;
+        border: 1px solid #1f1f1f;
+        border-radius: 8px;
+        overflow: hidden;
     }
     
-    .holding-card {
-        background: #1e293b;
-        border-radius: 12px;
-        padding: 16px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    }
-    
-    .holding-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: start;
-        margin-bottom: 12px;
-    }
-    
-    .holding-title {
+    .holding-item {
         display: flex;
         align-items: center;
-        gap: 8px;
+        padding: 12px 14px;
+        border-bottom: 1px solid #1a1a1a;
+        transition: background 0.2s;
+    }
+    
+    .holding-item:last-child {
+        border-bottom: none;
+    }
+    
+    .holding-item:active {
+        background: #1a1a1a;
+    }
+    
+    .holding-left {
+        flex: 1;
+        min-width: 0;
+    }
+    
+    .holding-symbol-row {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        margin-bottom: 2px;
     }
     
     .holding-symbol {
-        font-size: 20px;
-        font-weight: bold;
+        font-size: 15px;
+        font-weight: 600;
+        color: #f5f5f5;
     }
     
     .holding-type {
-        font-size: 11px;
-        background: #475569;
-        color: #cbd5e1;
-        padding: 4px 8px;
-        border-radius: 12px;
+        font-size: 9px;
+        background: #1f1f1f;
+        color: #888;
+        padding: 2px 6px;
+        border-radius: 4px;
+        text-transform: uppercase;
+        letter-spacing: 0.3px;
     }
     
-    .holding-quantity {
-        font-size: 14px;
-        color: #94a3b8;
-        margin-top: 4px;
+    .holding-qty {
+        font-size: 12px;
+        color: #666;
+    }
+    
+    .holding-center {
+        text-align: right;
+        margin-right: 14px;
+    }
+    
+    .holding-price {
+        font-size: 15px;
+        font-weight: 600;
+        color: #f5f5f5;
+        margin-bottom: 2px;
+    }
+    
+    .holding-change {
+        font-size: 12px;
+        font-weight: 500;
+    }
+    
+    .holding-right {
+        text-align: right;
+        min-width: 85px;
+    }
+    
+    .holding-value {
+        font-size: 15px;
+        font-weight: 600;
+        color: #f5f5f5;
+        margin-bottom: 2px;
+    }
+    
+    .edit-btn {
+        background: transparent;
+        border: none;
+        color: #666;
+        font-size: 11px;
+        cursor: pointer;
+        padding: 0;
+    }
+    
+    .qty-input {
+        background: #0a0a0a;
+        border: 1px solid #2a2a2a;
+        border-radius: 4px;
+        padding: 4px 6px;
+        color: #f5f5f5;
+        font-size: 13px;
+        width: 70px;
+        text-align: right;
     }
     
     .remove-btn {
         background: transparent;
         border: none;
-        color: #94a3b8;
-        font-size: 20px;
+        color: #444;
+        font-size: 18px;
         cursor: pointer;
-        padding: 4px;
+        padding: 0 0 0 10px;
+        margin-left: 8px;
     }
     
-    .holding-details {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 16px;
-    }
-    
-    .detail-label {
-        color: #94a3b8;
-        font-size: 12px;
-        margin-bottom: 4px;
-    }
-    
-    .detail-value {
-        font-size: 24px;
-        font-weight: bold;
-    }
-    
-    .detail-change {
-        display: flex;
-        align-items: center;
-        gap: 4px;
-        font-size: 14px;
-        margin-top: 4px;
-    }
-    
-    .detail-change.positive {
-        color: #4ade80;
-    }
-    
-    .detail-change.negative {
-        color: #f87171;
-    }
-    
-    .edit-quantity-btn {
-        background: transparent;
-        border: none;
-        color: #60a5fa;
-        font-size: 12px;
-        cursor: pointer;
-        margin-top: 4px;
-    }
-    
-    .quantity-input {
-        background: #475569;
-        border: none;
-        border-radius: 4px;
-        padding: 8px;
-        color: white;
-        font-size: 14px;
-        width: 100%;
-    }
+    .positive { color: #10b981; }
+    .negative { color: #ef4444; }
     
     .add-btn {
         position: fixed;
-        bottom: 24px;
-        right: 24px;
-        background: #2563eb;
+        bottom: 16px;
+        right: 16px;
+        background: #f5f5f5;
         border: none;
         border-radius: 50%;
-        width: 60px;
-        height: 60px;
-        color: white;
-        font-size: 32px;
+        width: 52px;
+        height: 52px;
+        color: #0a0a0a;
+        font-size: 24px;
         cursor: pointer;
-        box-shadow: 0 8px 24px rgba(37, 99, 235, 0.4);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.5);
     }
     
     .add-btn:active {
-        background: #1d4ed8;
+        transform: scale(0.92);
     }
     
     .modal {
@@ -222,29 +229,29 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background: rgba(0,0,0,0.7);
+        background: rgba(0,0,0,0.9);
         align-items: center;
         justify-content: center;
         padding: 20px;
         z-index: 1000;
     }
     
-    .modal.show {
-        display: flex;
-    }
+    .modal.show { display: flex; }
     
     .modal-content {
-        background: #1e293b;
-        border-radius: 16px;
+        background: #141414;
+        border: 1px solid #1f1f1f;
+        border-radius: 12px;
         padding: 24px;
         width: 100%;
-        max-width: 400px;
+        max-width: 340px;
     }
     
     .modal-title {
-        font-size: 24px;
-        font-weight: bold;
+        font-size: 18px;
+        font-weight: 600;
         margin-bottom: 20px;
+        color: #f5f5f5;
     }
     
     .form-group {
@@ -253,64 +260,78 @@
     
     .form-label {
         display: block;
-        color: #94a3b8;
-        font-size: 14px;
+        color: #888;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
         margin-bottom: 8px;
     }
     
     .type-toggle {
-        display: flex;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
         gap: 8px;
     }
     
     .type-btn {
-        flex: 1;
         padding: 10px;
-        border: none;
-        border-radius: 8px;
-        background: #475569;
-        color: white;
+        border: 1px solid #1f1f1f;
+        border-radius: 6px;
+        background: #0a0a0a;
+        color: #666;
         cursor: pointer;
-        font-size: 16px;
+        font-size: 13px;
     }
     
     .type-btn.active {
-        background: #2563eb;
+        background: #1f1f1f;
+        border-color: #2a2a2a;
+        color: #f5f5f5;
     }
     
     .form-input {
         width: 100%;
-        padding: 12px;
-        border: none;
-        border-radius: 8px;
-        background: #475569;
-        color: white;
-        font-size: 16px;
+        padding: 10px 12px;
+        border: 1px solid #1f1f1f;
+        border-radius: 6px;
+        background: #0a0a0a;
+        color: #f5f5f5;
+        font-size: 14px;
+    }
+    
+    .form-input:focus {
+        outline: none;
+        border-color: #2a2a2a;
     }
     
     .modal-actions {
-        display: flex;
-        gap: 12px;
-        margin-top: 24px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin-top: 20px;
     }
     
     .btn {
-        flex: 1;
-        padding: 12px;
+        padding: 11px;
         border: none;
-        border-radius: 8px;
-        font-size: 16px;
+        border-radius: 6px;
+        font-size: 14px;
+        font-weight: 500;
         cursor: pointer;
     }
     
     .btn-cancel {
-        background: #475569;
-        color: white;
+        background: #1a1a1a;
+        color: #888;
     }
     
     .btn-add {
-        background: #2563eb;
-        color: white;
+        background: #f5f5f5;
+        color: #0a0a0a;
+    }
+    
+    .btn:active {
+        opacity: 0.8;
     }
     
     .spinner {
@@ -318,8 +339,13 @@
     }
     
     @keyframes spin {
-        from { transform: rotate(0deg); }
         to { transform: rotate(360deg); }
+    }
+    
+    .empty-state {
+        text-align: center;
+        padding: 40px 20px;
+        color: #666;
     }
 </style>
 ```
@@ -334,12 +360,9 @@
 
 ```
     <div class="total-card">
-        <div class="total-label">Total Portfolio Value</div>
+        <div class="total-label">Total Value</div>
         <div class="total-value" id="totalValue">$0.00</div>
-        <div class="total-change" id="totalChange">
-            <span>$0.00 (0.00%)</span>
-            <span style="color: #bfdbfe; font-size: 14px;">today</span>
-        </div>
+        <div class="total-change" id="totalChange">$0.00 (0.00%)</div>
     </div>
     
     <div class="holdings" id="holdings"></div>
@@ -349,7 +372,7 @@
 
 <div class="modal" id="modal">
     <div class="modal-content">
-        <div class="modal-title">Add New Holding</div>
+        <div class="modal-title">Add Holding</div>
         
         <div class="form-group">
             <label class="form-label">Type</label>
@@ -360,7 +383,7 @@
         </div>
         
         <div class="form-group">
-            <label class="form-label">Symbol <span id="cryptoHint"></span></label>
+            <label class="form-label">Symbol</label>
             <input type="text" class="form-input" id="symbolInput" placeholder="AAPL">
         </div>
         
@@ -384,15 +407,11 @@
     
     function loadHoldings() {
         const saved = localStorage.getItem('portfolio-holdings');
-        if (saved) {
-            holdings = JSON.parse(saved);
-        } else {
-            holdings = [
-                { symbol: 'UNH', quantity: 0, type: 'stock' },
-                { symbol: 'GOOG', quantity: 0, type: 'stock' },
-                { symbol: 'AMD', quantity: 0, type: 'stock' }
-            ];
-        }
+        holdings = saved ? JSON.parse(saved) : [
+            { symbol: 'UNH', quantity: 0, type: 'stock' },
+            { symbol: 'GOOG', quantity: 0, type: 'stock' },
+            { symbol: 'AMD', quantity: 0, type: 'stock' }
+        ];
     }
     
     function saveHoldings() {
@@ -413,7 +432,6 @@
         currentType = type;
         document.getElementById('stockBtn').classList.toggle('active', type === 'stock');
         document.getElementById('cryptoBtn').classList.toggle('active', type === 'crypto');
-        document.getElementById('cryptoHint').textContent = type === 'crypto' ? '(e.g., BTC, ETH)' : '';
     }
     
     function addHolding() {
@@ -472,13 +490,7 @@
                 };
             }
         } catch (error) {
-            console.error(`Error fetching ${holding.symbol}:`, error);
-            prices[holding.symbol] = {
-                current: 0,
-                change: 0,
-                changePercent: 0,
-                error: true
-            };
+            prices[holding.symbol] = { current: 0, change: 0, changePercent: 0 };
         }
     }
     
@@ -495,7 +507,7 @@
         updateTotals();
     }
     
-    function formatCurrency(value) {
+    function fmt(value) {
         return '$' + value.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
     }
     
@@ -503,84 +515,79 @@
         let totalValue = 0;
         let totalChange = 0;
         
-        holdings.forEach(holding => {
-            const price = prices[holding.symbol];
-            if (price) {
-                totalValue += price.current * holding.quantity;
-                totalChange += price.change * holding.quantity;
+        holdings.forEach(h => {
+            const p = prices[h.symbol];
+            if (p) {
+                totalValue += p.current * h.quantity;
+                totalChange += p.change * h.quantity;
             }
         });
         
-        const totalChangePercent = totalValue > 0 ? (totalChange / (totalValue - totalChange)) * 100 : 0;
+        const pct = totalValue > 0 ? (totalChange / (totalValue - totalChange)) * 100 : 0;
         
-        document.getElementById('totalValue').textContent = formatCurrency(totalValue);
+        document.getElementById('totalValue').textContent = fmt(totalValue);
         
-        const changeEl = document.getElementById('totalChange');
-        changeEl.className = 'total-change ' + (totalChange >= 0 ? 'positive' : 'negative');
-        changeEl.innerHTML = `
-            <span>${totalChange >= 0 ? '↗' : '↘'} ${totalChange >= 0 ? '+' : ''}${formatCurrency(totalChange)} (${totalChangePercent >= 0 ? '+' : ''}${totalChangePercent.toFixed(2)}%)</span>
-            <span style="color: #bfdbfe; font-size: 14px;">today</span>
-        `;
+        const el = document.getElementById('totalChange');
+        el.className = 'total-change ' + (totalChange >= 0 ? 'positive' : 'negative');
+        el.textContent = `${totalChange >= 0 ? '+' : ''}${fmt(totalChange)} (${pct >= 0 ? '+' : ''}${pct.toFixed(2)}%)`;
     }
     
     function renderHoldings() {
         const container = document.getElementById('holdings');
+        
+        if (holdings.length === 0) {
+            container.innerHTML = '<div class="empty-state">No holdings yet<br>Tap + to add</div>';
+            return;
+        }
+        
         container.innerHTML = '';
         
-        holdings.forEach((holding, index) => {
-            const price = prices[holding.symbol] || { current: 0, change: 0, changePercent: 0 };
-            const isPositive = price.change >= 0;
-            const holdingValue = price.current * holding.quantity;
+        holdings.forEach((h, i) => {
+            const p = prices[h.symbol] || { current: 0, change: 0, changePercent: 0 };
+            const pos = p.change >= 0;
+            const val = p.current * h.quantity;
             
-            const card = document.createElement('div');
-            card.className = 'holding-card';
+            const item = document.createElement('div');
+            item.className = 'holding-item';
             
-            card.innerHTML = `
-                <div class="holding-header">
-                    <div>
-                        <div class="holding-title">
-                            <div class="holding-symbol">${holding.symbol}</div>
-                            <div class="holding-type">${holding.type}</div>
-                        </div>
-                        <div class="holding-quantity">
-                            ${holding.quantity > 0 ? holding.quantity + ' shares' : 'No shares held'}
-                        </div>
+            item.innerHTML = `
+                <div class="holding-left">
+                    <div class="holding-symbol-row">
+                        <div class="holding-symbol">${h.symbol}</div>
+                        <div class="holding-type">${h.type}</div>
                     </div>
-                    <button class="remove-btn" onclick="removeHolding(${index})">×</button>
+                    <div class="holding-qty">${h.quantity} shares</div>
                 </div>
                 
-                <div class="holding-details">
-                    <div>
-                        <div class="detail-label">Current Price</div>
-                        <div class="detail-value">${formatCurrency(price.current)}</div>
-                        <div class="detail-change ${isPositive ? 'positive' : 'negative'}">
-                            ${isPositive ? '↗' : '↘'} ${isPositive ? '+' : ''}${formatCurrency(price.change)} (${isPositive ? '+' : ''}${price.changePercent.toFixed(2)}%)
-                        </div>
-                    </div>
-                    
-                    <div>
-                        <div class="detail-label">Position Value</div>
-                        ${editingIndex === index ? `
-                            <input type="number" class="quantity-input" value="${holding.quantity}" 
-                                onblur="updateQuantity(${index}, this.value)"
-                                onkeypress="if(event.key === 'Enter') updateQuantity(${index}, this.value)"
-                                autofocus>
-                        ` : `
-                            <div class="detail-value">${formatCurrency(holdingValue)}</div>
-                            <button class="edit-quantity-btn" onclick="startEdit(${index})">Edit quantity</button>
-                        `}
+                <div class="holding-center">
+                    <div class="holding-price">${fmt(p.current)}</div>
+                    <div class="holding-change ${pos ? 'positive' : 'negative'}">
+                        ${pos ? '+' : ''}${p.changePercent.toFixed(2)}%
                     </div>
                 </div>
+                
+                <div class="holding-right">
+                    ${editingIndex === i ? `
+                        <input type="number" class="qty-input" value="${h.quantity}" 
+                            onblur="updateQuantity(${i}, this.value)"
+                            onkeypress="if(event.key === 'Enter') updateQuantity(${i}, this.value)"
+                            autofocus>
+                    ` : `
+                        <div class="holding-value">${fmt(val)}</div>
+                        <button class="edit-btn" onclick="startEdit(${i})">Edit</button>
+                    `}
+                </div>
+                
+                <button class="remove-btn" onclick="removeHolding(${i})">×</button>
             `;
             
-            container.appendChild(card);
+            container.appendChild(item);
         });
     }
     
     loadHoldings();
     renderHoldings();
     fetchAllPrices();
-    
     setInterval(fetchAllPrices, 60000);
 </script>
 ```
