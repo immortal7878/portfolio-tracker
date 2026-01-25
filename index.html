@@ -5,365 +5,72 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: #0a0a0a;
-            color: #e5e5e5;
-            min-height: 100vh;
-            padding: 12px;
-            padding-bottom: 70px;
-        }
-        
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 0;
-            margin-bottom: 16px;
-            border-bottom: 1px solid #1a1a1a;
-        }
-        
-        h1 {
-            font-size: 20px;
-            font-weight: 600;
-            color: #f5f5f5;
-            letter-spacing: -0.5px;
-        }
-        
-        .refresh-btn {
-            background: #1a1a1a;
-            border: none;
-            border-radius: 6px;
-            padding: 6px 10px;
-            color: #888;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        
-        .refresh-btn:active {
-            background: #222;
-        }
-        
-        .total-card {
-            background: #141414;
-            border: 1px solid #1f1f1f;
-            border-radius: 8px;
-            padding: 16px;
-            margin-bottom: 16px;
-        }
-        
-        .total-label {
-            color: #666;
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 4px;
-        }
-        
-        .total-value {
-            font-size: 28px;
-            font-weight: 600;
-            color: #f5f5f5;
-            margin-bottom: 6px;
-        }
-        
-        .total-change {
-            font-size: 14px;
-            font-weight: 500;
-        }
-        
-        .holdings {
-            background: #141414;
-            border: 1px solid #1f1f1f;
-            border-radius: 8px;
-            overflow: hidden;
-        }
-        
-        .holding-item {
-            display: flex;
-            align-items: center;
-            padding: 12px 14px;
-            border-bottom: 1px solid #1a1a1a;
-            transition: background 0.2s;
-        }
-        
-        .holding-item:last-child {
-            border-bottom: none;
-        }
-        
-        .holding-item:active {
-            background: #1a1a1a;
-        }
-        
-        .holding-left {
-            flex: 1;
-            min-width: 0;
-        }
-        
-        .holding-symbol-row {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            margin-bottom: 2px;
-        }
-        
-        .holding-symbol {
-            font-size: 15px;
-            font-weight: 600;
-            color: #f5f5f5;
-        }
-        
-        .holding-type {
-            font-size: 9px;
-            background: #1f1f1f;
-            color: #888;
-            padding: 2px 6px;
-            border-radius: 4px;
-            text-transform: uppercase;
-            letter-spacing: 0.3px;
-        }
-        
-        .holding-qty {
-            font-size: 12px;
-            color: #666;
-        }
-        
-        .holding-center {
-            text-align: right;
-            margin-right: 14px;
-        }
-        
-        .holding-price {
-            font-size: 15px;
-            font-weight: 600;
-            color: #f5f5f5;
-            margin-bottom: 2px;
-        }
-        
-        .holding-change {
-            font-size: 12px;
-            font-weight: 500;
-        }
-        
-        .holding-right {
-            text-align: right;
-            min-width: 85px;
-        }
-        
-        .holding-value {
-            font-size: 15px;
-            font-weight: 600;
-            color: #f5f5f5;
-            margin-bottom: 2px;
-        }
-        
-        .edit-btn {
-            background: transparent;
-            border: none;
-            color: #666;
-            font-size: 11px;
-            cursor: pointer;
-            padding: 0;
-        }
-        
-        .qty-input {
-            background: #0a0a0a;
-            border: 1px solid #2a2a2a;
-            border-radius: 4px;
-            padding: 4px 6px;
-            color: #f5f5f5;
-            font-size: 13px;
-            width: 70px;
-            text-align: right;
-        }
-        
-        .remove-btn {
-            background: transparent;
-            border: none;
-            color: #444;
-            font-size: 18px;
-            cursor: pointer;
-            padding: 0 0 0 10px;
-            margin-left: 8px;
-        }
-        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0a0a0a; color: #e5e5e5; min-height: 100vh; padding: 12px 12px 70px; }
+        .container { max-width: 600px; margin: 0 auto; }
+        .header { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; margin-bottom: 16px; border-bottom: 1px solid #1a1a1a; }
+        h1 { font-size: 20px; font-weight: 600; color: #f5f5f5; letter-spacing: -0.5px; }
+        .refresh-btn { background: #1a1a1a; border: none; border-radius: 6px; padding: 6px 10px; color: #888; cursor: pointer; font-size: 16px; }
+        .refresh-btn:active { background: #222; }
+        .total-card { background: #141414; border: 1px solid #1f1f1f; border-radius: 8px; padding: 16px; margin-bottom: 16px; }
+        .total-label { color: #666; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+        .total-value { font-size: 28px; font-weight: 600; color: #f5f5f5; margin-bottom: 6px; }
+        .total-change { font-size: 14px; font-weight: 500; }
+        .holdings { background: #141414; border: 1px solid #1f1f1f; border-radius: 8px; overflow: hidden; }
+        .holding-item { display: flex; align-items: center; padding: 12px 14px; border-bottom: 1px solid #1a1a1a; transition: background 0.2s; }
+        .holding-item:last-child { border-bottom: none; }
+        .holding-item:active { background: #1a1a1a; }
+        .holding-left { flex: 1; min-width: 0; }
+        .holding-symbol-row { display: flex; align-items: center; gap: 6px; margin-bottom: 2px; }
+        .holding-symbol { font-size: 15px; font-weight: 600; color: #f5f5f5; }
+        .holding-type { font-size: 9px; background: #1f1f1f; color: #888; padding: 2px 6px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.3px; }
+        .holding-qty { font-size: 12px; color: #666; }
+        .holding-center { text-align: right; margin-right: 14px; }
+        .holding-price { font-size: 15px; font-weight: 600; color: #f5f5f5; margin-bottom: 2px; }
+        .holding-change { font-size: 12px; font-weight: 500; }
+        .holding-right { text-align: right; min-width: 85px; }
+        .holding-value { font-size: 15px; font-weight: 600; color: #f5f5f5; margin-bottom: 2px; }
+        .edit-btn { background: transparent; border: none; color: #666; font-size: 11px; cursor: pointer; padding: 0; }
+        .qty-input { background: #0a0a0a; border: 1px solid #2a2a2a; border-radius: 4px; padding: 4px 6px; color: #f5f5f5; font-size: 13px; width: 70px; text-align: right; }
+        .remove-btn { background: transparent; border: none; color: #444; font-size: 18px; cursor: pointer; padding: 0 0 0 10px; margin-left: 8px; }
         .positive { color: #10b981; }
         .negative { color: #ef4444; }
-        
-        .add-btn {
-            position: fixed;
-            bottom: 16px;
-            right: 16px;
-            background: #f5f5f5;
-            border: none;
-            border-radius: 50%;
-            width: 52px;
-            height: 52px;
-            color: #0a0a0a;
-            font-size: 24px;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-        }
-        
-        .add-btn:active {
-            transform: scale(0.92);
-        }
-        
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0,0,0,0.9);
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            z-index: 1000;
-        }
-        
+        .add-btn { position: fixed; bottom: 16px; right: 16px; background: #f5f5f5; border: none; border-radius: 50%; width: 52px; height: 52px; color: #0a0a0a; font-size: 24px; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.5); }
+        .add-btn:active { transform: scale(0.92); }
+        .modal { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.9); align-items: center; justify-content: center; padding: 20px; z-index: 1000; }
         .modal.show { display: flex; }
-        
-        .modal-content {
-            background: #141414;
-            border: 1px solid #1f1f1f;
-            border-radius: 12px;
-            padding: 24px;
-            width: 100%;
-            max-width: 340px;
-        }
-        
-        .modal-title {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 20px;
-            color: #f5f5f5;
-        }
-        
-        .form-group {
-            margin-bottom: 16px;
-        }
-        
-        .form-label {
-            display: block;
-            color: #888;
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 8px;
-        }
-        
-        .type-toggle {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 8px;
-        }
-        
-        .type-btn {
-            padding: 10px;
-            border: 1px solid #1f1f1f;
-            border-radius: 6px;
-            background: #0a0a0a;
-            color: #666;
-            cursor: pointer;
-            font-size: 13px;
-        }
-        
-        .type-btn.active {
-            background: #1f1f1f;
-            border-color: #2a2a2a;
-            color: #f5f5f5;
-        }
-        
-        .form-input {
-            width: 100%;
-            padding: 10px 12px;
-            border: 1px solid #1f1f1f;
-            border-radius: 6px;
-            background: #0a0a0a;
-            color: #f5f5f5;
-            font-size: 14px;
-        }
-        
-        .form-input:focus {
-            outline: none;
-            border-color: #2a2a2a;
-        }
-        
-        .modal-actions {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-top: 20px;
-        }
-        
-        .btn {
-            padding: 11px;
-            border: none;
-            border-radius: 6px;
-            font-size: 14px;
-            font-weight: 500;
-            cursor: pointer;
-        }
-        
-        .btn-cancel {
-            background: #1a1a1a;
-            color: #888;
-        }
-        
-        .btn-add {
-            background: #f5f5f5;
-            color: #0a0a0a;
-        }
-        
-        .btn:active {
-            opacity: 0.8;
-        }
-        
-        .spinner {
-            animation: spin 1s linear infinite;
-        }
-        
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-        
-        .empty-state {
-            text-align: center;
-            padding: 40px 20px;
-            color: #666;
-        }
-        
-        .error-msg {
-            font-size: 11px;
-            color: #ef4444;
-            margin-top: 2px;
-        }
+        .modal-content { background: #141414; border: 1px solid #1f1f1f; border-radius: 12px; padding: 24px; width: 100%; max-width: 340px; }
+        .modal-title { font-size: 18px; font-weight: 600; margin-bottom: 20px; color: #f5f5f5; }
+        .form-group { margin-bottom: 16px; }
+        .form-label { display: block; color: #888; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+        .type-toggle { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+        .type-btn { padding: 10px; border: 1px solid #1f1f1f; border-radius: 6px; background: #0a0a0a; color: #666; cursor: pointer; font-size: 13px; }
+        .type-btn.active { background: #1f1f1f; border-color: #2a2a2a; color: #f5f5f5; }
+        .form-input { width: 100%; padding: 10px 12px; border: 1px solid #1f1f1f; border-radius: 6px; background: #0a0a0a; color: #f5f5f5; font-size: 14px; }
+        .form-input:focus { outline: none; border-color: #2a2a2a; }
+        .modal-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
+        .btn { padding: 11px; border: none; border-radius: 6px; font-size: 14px; font-weight: 500; cursor: pointer; }
+        .btn-cancel { background: #1a1a1a; color: #888; }
+        .btn-add { background: #f5f5f5; color: #0a0a0a; }
+        .btn:active { opacity: 0.8; }
+        .spinner { animation: spin 1s linear infinite; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .empty-state { text-align: center; padding: 40px 20px; color: #666; }
+        .note { font-size: 10px; color: #666; margin-top: 8px; text-align: center; }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
             <h1>Portfolio</h1>
-            <button class="refresh-btn" onclick="fetchAllPrices()" id="refreshBtn">↻</button>
+            <button class="refresh-btn" onclick="updatePrices()" id="refreshBtn">↻</button>
         </div>
         
         <div class="total-card">
             <div class="total-label">Total Value</div>
             <div class="total-value" id="totalValue">$0.00</div>
             <div class="total-change" id="totalChange">$0.00 (0.00%)</div>
+            <div class="note">Enter quantities and tap refresh to see live prices</div>
         </div>
         
         <div class="holdings" id="holdings"></div>
@@ -374,7 +81,6 @@
     <div class="modal" id="modal">
         <div class="modal-content">
             <div class="modal-title">Add Holding</div>
-            
             <div class="form-group">
                 <label class="form-label">Type</label>
                 <div class="type-toggle">
@@ -382,17 +88,14 @@
                     <button class="type-btn" onclick="setType('crypto')" id="cryptoBtn">Crypto</button>
                 </div>
             </div>
-            
             <div class="form-group">
                 <label class="form-label">Symbol</label>
                 <input type="text" class="form-input" id="symbolInput" placeholder="AAPL">
             </div>
-            
             <div class="form-group">
                 <label class="form-label">Quantity</label>
                 <input type="number" class="form-input" id="quantityInput" placeholder="0" step="0.01">
             </div>
-            
             <div class="modal-actions">
                 <button class="btn btn-cancel" onclick="hideModal()">Cancel</button>
                 <button class="btn btn-add" onclick="addHolding()">Add</button>
@@ -401,17 +104,14 @@
     </div>
 
     <script>
-        let holdings = [];
-        let prices = {};
-        let currentType = 'stock';
-        let editingIndex = null;
+        let holdings = [], prices = {}, currentType = 'stock', editingIndex = null;
         
         function loadHoldings() {
             const saved = localStorage.getItem('portfolio-holdings');
             holdings = saved ? JSON.parse(saved) : [
-                { symbol: 'UNH', quantity: 0, type: 'stock' },
-                { symbol: 'GOOG', quantity: 0, type: 'stock' },
-                { symbol: 'AMD', quantity: 0, type: 'stock' }
+                { symbol: 'UNH', quantity: 10, type: 'stock' },
+                { symbol: 'GOOG', quantity: 5, type: 'stock' },
+                { symbol: 'AMD', quantity: 20, type: 'stock' }
             ];
         }
         
@@ -419,10 +119,7 @@
             localStorage.setItem('portfolio-holdings', JSON.stringify(holdings));
         }
         
-        function showModal() {
-            document.getElementById('modal').classList.add('show');
-        }
-        
+        function showModal() { document.getElementById('modal').classList.add('show'); }
         function hideModal() {
             document.getElementById('modal').classList.remove('show');
             document.getElementById('symbolInput').value = '';
@@ -438,189 +135,111 @@
         function addHolding() {
             const symbol = document.getElementById('symbolInput').value.toUpperCase().trim();
             const quantity = parseFloat(document.getElementById('quantityInput').value) || 0;
-            
             if (symbol) {
                 holdings.push({ symbol: symbol, quantity: quantity, type: currentType });
                 saveHoldings();
                 hideModal();
-                renderHoldings();
-                fetchAllPrices();
+                render();
+                updatePrices();
             }
         }
         
-        function removeHolding(index) {
-            holdings.splice(index, 1);
+        function removeHolding(i) {
+            holdings.splice(i, 1);
             saveHoldings();
-            renderHoldings();
+            render();
             updateTotals();
         }
         
-        function startEdit(index) {
-            editingIndex = index;
-            renderHoldings();
-        }
+        function startEdit(i) { editingIndex = i; render(); }
         
-        function updateQuantity(index, value) {
-            holdings[index].quantity = parseFloat(value) || 0;
+        function updateQuantity(i, v) {
+            holdings[i].quantity = parseFloat(v) || 0;
             saveHoldings();
             editingIndex = null;
-            renderHoldings();
+            render();
             updateTotals();
         }
         
-        async function fetchPrice(holding) {
-            try {
-                if (holding.type === 'crypto') {
-                    const coinMap = {
-                        'BTC': 'bitcoin',
-                        'ETH': 'ethereum',
-                        'SOL': 'solana',
-                        'ADA': 'cardano',
-                        'DOT': 'polkadot',
-                        'DOGE': 'dogecoin',
-                        'MATIC': 'matic-network',
-                        'LINK': 'chainlink',
-                        'UNI': 'uniswap',
-                        'AVAX': 'avalanche-2'
-                    };
-                    
-                    const coinId = coinMap[holding.symbol] || holding.symbol.toLowerCase();
-                    const response = await fetch(
-                        'https://api.coingecko.com/api/v3/simple/price?ids=' + coinId + '&vs_currencies=usd&include_24hr_change=true'
-                    );
-                    const data = await response.json();
-                    
-                    if (data[coinId]) {
-                        const current = data[coinId].usd;
-                        const changePercent = data[coinId].usd_24h_change || 0;
-                        const change = (current * changePercent) / 100;
-                        
-                        prices[holding.symbol] = {
-                            current: current,
-                            change: change,
-                            changePercent: changePercent
-                        };
-                        return;
-                    }
-                }
-                
-                const response = await fetch(
-                    'https://finnhub.io/api/v1/quote?symbol=' + holding.symbol + '&token=ct7bl6hr01qhlsn34gr0ct7bl6hr01qhlsn34grg'
-                );
-                const data = await response.json();
-                
-                if (data.c && data.c > 0) {
-                    const current = data.c;
-                    const previous = data.pc;
-                    const change = current - previous;
-                    const changePercent = (change / previous) * 100;
-                    
-                    prices[holding.symbol] = {
-                        current: current,
-                        change: change,
-                        changePercent: changePercent
-                    };
-                } else {
-                    throw new Error('No data');
-                }
-            } catch (error) {
-                console.error('Error fetching ' + holding.symbol + ':', error);
-                prices[holding.symbol] = { 
-                    current: 0, 
-                    change: 0, 
-                    changePercent: 0,
-                    error: true 
-                };
-            }
-        }
-        
-        async function fetchAllPrices() {
+        async function updatePrices() {
             const btn = document.getElementById('refreshBtn');
             btn.classList.add('spinner');
             
-            for (const holding of holdings) {
-                await fetchPrice(holding);
+            // Use Yahoo Finance via yfinance API proxy (free, no key)
+            for (const h of holdings) {
+                try {
+                    const symbol = h.type === 'crypto' ? h.symbol + '-USD' : h.symbol;
+                    const url = 'https://query1.finance.yahoo.com/v8/finance/chart/' + symbol + '?range=1d&interval=1d';
+                    const res = await fetch(url);
+                    const data = await res.json();
+                    
+                    if (data.chart && data.chart.result && data.chart.result[0]) {
+                        const r = data.chart.result[0];
+                        const current = r.meta.regularMarketPrice || r.meta.previousClose;
+                        const previous = r.meta.chartPreviousClose || r.meta.previousClose;
+                        const change = current - previous;
+                        const pct = (change / previous) * 100;
+                        
+                        prices[h.symbol] = { current: current, change: change, changePercent: pct };
+                    } else {
+                        prices[h.symbol] = { current: 0, change: 0, changePercent: 0, error: true };
+                    }
+                } catch (e) {
+                    console.log('Error:', h.symbol, e);
+                    prices[h.symbol] = { current: 0, change: 0, changePercent: 0, error: true };
+                }
             }
             
             btn.classList.remove('spinner');
-            renderHoldings();
+            render();
             updateTotals();
         }
         
-        function fmt(value) {
-            return '$' + value.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        function fmt(v) {
+            return '$' + v.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
         }
         
         function updateTotals() {
-            let totalValue = 0;
-            let totalChange = 0;
-            
-            holdings.forEach(function(h) {
+            let tv = 0, tc = 0;
+            holdings.forEach(h => {
                 const p = prices[h.symbol];
                 if (p && !p.error) {
-                    totalValue += p.current * h.quantity;
-                    totalChange += p.change * h.quantity;
+                    tv += p.current * h.quantity;
+                    tc += p.change * h.quantity;
                 }
             });
-            
-            const pct = totalValue > 0 ? (totalChange / (totalValue - totalChange)) * 100 : 0;
-            
-            document.getElementById('totalValue').textContent = fmt(totalValue);
-            
+            const pct = tv > 0 ? (tc / (tv - tc)) * 100 : 0;
+            document.getElementById('totalValue').textContent = fmt(tv);
             const el = document.getElementById('totalChange');
-            el.className = 'total-change ' + (totalChange >= 0 ? 'positive' : 'negative');
-            el.textContent = (totalChange >= 0 ? '+' : '') + fmt(totalChange) + ' (' + (pct >= 0 ? '+' : '') + pct.toFixed(2) + '%)';
+            el.className = 'total-change ' + (tc >= 0 ? 'positive' : 'negative');
+            el.textContent = (tc >= 0 ? '+' : '') + fmt(tc) + ' (' + (pct >= 0 ? '+' : '') + pct.toFixed(2) + '%)';
         }
         
-        function renderHoldings() {
-            const container = document.getElementById('holdings');
-            
+        function render() {
+            const c = document.getElementById('holdings');
             if (holdings.length === 0) {
-                container.innerHTML = '<div class="empty-state">No holdings yet<br>Tap + to add</div>';
+                c.innerHTML = '<div class="empty-state">No holdings yet<br>Tap + to add</div>';
                 return;
             }
-            
-            container.innerHTML = '';
-            
-            holdings.forEach(function(h, i) {
+            c.innerHTML = '';
+            holdings.forEach((h, i) => {
                 const p = prices[h.symbol] || { current: 0, change: 0, changePercent: 0 };
                 const pos = p.change >= 0;
                 const val = p.current * h.quantity;
-                
-                const item = document.createElement('div');
-                item.className = 'holding-item';
-                
-                const errorMsg = p.error ? '<div class="error-msg">Price unavailable</div>' : '';
-                
+                const d = document.createElement('div');
+                d.className = 'holding-item';
                 const editHtml = editingIndex === i 
-                    ? '<input type="number" class="qty-input" value="' + h.quantity + '" onblur="updateQuantity(' + i + ', this.value)" onkeypress="if(event.key === \'Enter\') updateQuantity(' + i + ', this.value)" autofocus>'
+                    ? '<input type="number" class="qty-input" value="' + h.quantity + '" onblur="updateQuantity(' + i + ', this.value)" onkeypress="if(event.key===\'Enter\') updateQuantity(' + i + ', this.value)" autofocus>'
                     : '<div class="holding-value">' + fmt(val) + '</div><button class="edit-btn" onclick="startEdit(' + i + ')">Edit</button>';
-                
-                item.innerHTML = 
-                    '<div class="holding-left">' +
-                        '<div class="holding-symbol-row">' +
-                            '<div class="holding-symbol">' + h.symbol + '</div>' +
-                            '<div class="holding-type">' + h.type + '</div>' +
-                        '</div>' +
-                        '<div class="holding-qty">' + h.quantity + ' shares' + errorMsg + '</div>' +
-                    '</div>' +
-                    '<div class="holding-center">' +
-                        '<div class="holding-price">' + fmt(p.current) + '</div>' +
-                        '<div class="holding-change ' + (pos ? 'positive' : 'negative') + '">' +
-                            (pos ? '+' : '') + p.changePercent.toFixed(2) + '%' +
-                        '</div>' +
-                    '</div>' +
-                    '<div class="holding-right">' + editHtml + '</div>' +
-                    '<button class="remove-btn" onclick="removeHolding(' + i + ')">×</button>';
-                
-                container.appendChild(item);
+                d.innerHTML = '<div class="holding-left"><div class="holding-symbol-row"><div class="holding-symbol">' + h.symbol + '</div><div class="holding-type">' + h.type + '</div></div><div class="holding-qty">' + h.quantity + ' shares</div></div><div class="holding-center"><div class="holding-price">' + fmt(p.current) + '</div><div class="holding-change ' + (pos ? 'positive' : 'negative') + '">' + (pos ? '+' : '') + p.changePercent.toFixed(2) + '%</div></div><div class="holding-right">' + editHtml + '</div><button class="remove-btn" onclick="removeHolding(' + i + ')">×</button>';
+                c.appendChild(d);
             });
         }
         
         loadHoldings();
-        renderHoldings();
-        fetchAllPrices();
-        setInterval(fetchAllPrices, 60000);
+        render();
+        updatePrices();
+        setInterval(updatePrices, 60000);
     </script>
 </body>
 </html>
